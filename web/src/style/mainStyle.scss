@@ -1,0 +1,196 @@
+@import './variables';
+// 页面主体样式调整
+*{
+   box-sizing: border-box;
+   outline: none;
+}
+html {
+   font-size: 13px;
+}
+body{
+   margin: 0;
+   padding: 0;
+   font-family: Arial, Helvetica, sans-serif;
+   line-height: 1.2em;
+   background: #f1f1f1;
+   -webkit-font-smoothing:antialiased
+}
+a{
+   color: #666;
+}
+p{
+   line-height: 1.5em;
+}
+
+
+// 对文字进行遍历(text-对应颜色
+@each $colorKey,$colorValue in $colors{
+   .text-#{$colorKey}{
+      color:$colorValue
+   }
+   .bg-#{$colorKey}{
+      background-color: $colorValue;
+   }
+}
+// 对文字字体进行修改
+@each $fontSizeKey,$fontSizeValue in  $font-size{
+   .fs-#{$fontSizeKey}{
+      font-size: $fontSizeValue*$base-font-size;
+   }
+}
+// text对齐样式
+@each $var in (left,center,right) {
+    .text-#{$var} {
+    text-align: $var !important;
+    }
+}
+
+// 横轴布局
+@each $flexKey,$flexValue in $flex-jc{
+   .jc-#{$flexKey}{
+      justify-content:$flexValue;
+   }
+}
+
+
+@each $flexKey,$flexValue in $flex-ai{
+   .ai-#{$flexKey}{
+      align-items:$flexValue;
+   }
+}
+// flex布局
+.d-flex{
+   display: flex;
+}
+.flex-column{
+   flex-direction: column;
+}
+.flex-wrap{
+   flex-wrap: wrap;
+}
+
+//当有元素占像素是，其他位置像素
+.flex-1{
+   flex: 1;
+}
+.flex-grow-1{
+   flex-grow: 1;
+}
+
+   // 定义m-0系列（定义全局边距）
+   @each $typeKey,$typeValue in $spacing-type{
+         @each $spacingSizesKey,$pacingSizeValue in $spacing-sizes{
+            .#{$typeKey}-#{$spacingSizesKey}{
+              #{ $typeValue} :$pacingSizeValue*$spacing-base-size
+            }
+         }
+   }
+   // 定义边距方法mt-0系列（定义上下左右边距）
+   @each $typeKey,$typeValue in $spacing-type{
+      @each $direcctionsKey,$direcctionsValue in $spacing-direcctions{
+         @each $spacingSizesKey,$pacingSizeValue in $spacing-sizes{
+            .#{$typeKey}#{ $direcctionsKey}-#{$spacingSizesKey}{
+              #{ $typeValue}-#{$direcctionsValue} :$pacingSizeValue*$spacing-base-size
+            }
+            
+         }
+      }
+   }
+   // 定义m-left m-bottom系列（定义上下、左右边距）
+   @each $typeKey,$typeValue in $spacing-type{
+         @each $spacingSizesKey,$pacingSizeValue in $spacing-sizes{
+            .#{$typeKey}x-#{$spacingSizesKey}{
+              #{ $typeValue}-left:$pacingSizeValue*$spacing-base-size;
+              #{ $typeValue}-right:$pacingSizeValue*$spacing-base-size
+            }
+            .#{$typeKey}y-#{$spacingSizesKey}{
+               #{ $typeValue}-top:$pacingSizeValue*$spacing-base-size;
+               #{ $typeValue}-bottom:$pacingSizeValue*$spacing-base-size
+             }
+         }
+   }
+
+
+   // 按钮的基本定义
+   .btn{
+      border: none;
+      border-radius: .1538rem;
+      font-size: map-get($font-size, 'sm')* $base-font-size ;
+      padding: 0.2rem 0.6rem;
+   }
+// 首页高亮
+.nav{
+   display: flex;
+   .nav-item{
+      padding-bottom: 0.2rem;
+     
+      border-bottom:3px solid transparent ;
+      &.active{
+         color: map-get($map:$colors , $key: 'primary');
+         border-bottom-color:map-get($map: $colors, $key:'primary' ) ;
+      }
+   }
+   &.nav-inverse{
+      .nav-item{
+         color:map-get($colors,'white') ;
+         &.active{
+            border-bottom-color:map-get($colors,'white')
+         }
+      }
+      
+   }
+}
+// 图片的高度和宽度
+.w-100{
+   width: 100%;
+}
+.h-100{
+   height: 100%;
+}
+
+// 精灵图的值
+   // 精灵图样式的导入
+   .sprite {
+      background-image: url(../uploads/index.png);
+      background-size: 28.8462rem;
+      display: inline-block;
+      &.sprite-news {
+         width: 1.7692rem;
+         height: 1.5385rem;
+         background-position: 63.546% 15.517%;
+       }
+       &.sprite-arrow{
+         width: .7692rem;
+         height: .7692rem;
+         background-position: 38.577% 52.076% ;
+       }
+    }
+   //  内容文字多余的隐藏
+   .text-ellipsis{
+      display: inline-block;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+   }
+// 定义边框的样式
+@each $dir in (top,right,bottom,left){
+   .border-#{$dir}{
+      border-#{$dir}:1px solid $boder-color 
+   }
+}
+//定义英雄列表中的样式
+.btn-lg{
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   i{
+      color: map-get($map: $colors, $key:'primary' );
+      font-weight: bold;
+      margin-right: 0.6rem;
+      font-size: 1.5rem;
+   }
+   background: map-get($map: $colors, $key:'white-1' );
+   border: 1px solid #eef0f2;
+   padding: 0.6rem 0.8rem;
+   font-size: 0.8rem;
+}

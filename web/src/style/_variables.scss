@@ -1,0 +1,59 @@
+
+// 页面主色调调整
+$colors:(
+   "primary":#db9e3f,
+   "blue":#4396e4,
+   "info":#4b67af,
+   "white" : #fff,
+   "white-1":#fcfcfc,
+   "light" : #f9f9f9,
+   "light-1":#d4d9de,
+   "grey": #999,
+   "grey-1":#666,
+   "dark-1":#343440,
+   "dark":#222,
+   "black":#000,
+   "danger":#7a1c18,
+   'green':#4a5d30
+
+);
+// 将边框颜色进行赋值操作
+$boder-color : map-get($map:$colors , $key: 'light-1');
+
+// 文字的样式
+$base-font-size:13px;
+$font-size:(
+   xxs:.6154,
+   xs:.7692,
+   sm:.9231,
+   md:1,
+   lg:1.0769,
+   xl:1.2308
+);
+
+$flex-jc:(
+   start:flex-start,
+   end:flex-end,
+   center:center,
+   between:space-between,
+   around:space-around
+
+);
+
+
+// 数轴布局
+$flex-ai:(
+   start:flex-start,
+   end:flex-end,
+   center:center,
+   stretch:stretch
+
+);
+
+
+// 边距定义
+$spacing-type :(m:margin,p:padding);
+$spacing-direcctions : (t:top,r:right,b:bottom,l:left);
+$spacing-base-size : 1rem;
+$spacing-sizes : (0:0,1:0.25,2:0.5,3:1,4:1.5,5:3);
+

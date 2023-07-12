@@ -1,0 +1,44 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "129319",
+      "name": "news",
+      "font_class": "news",
+      "unicode": "e8f1",
+      "unicode_decimal": 59633
+    },
+    {
+      "icon_id": "159943",
+      "name": "back",
+      "font_class": "fenxiang",
+      "unicode": "f016f",
+      "unicode_decimal": 983407
+    },
+    {
+      "icon_id": "372210",
+      "name": "cc-menu-circle",
+      "font_class": "cc-menu-circle",
+      "unicode": "e672",
+      "unicode_decimal": 58994
+    },
+    {
+      "icon_id": "6654507",
+      "name": "card-hero",
+      "font_class": "card-hero",
+      "unicode": "e61f",
+      "unicode_decimal": 58911
+    },
+    {
+      "icon_id": "22813453",
+      "name": "menu",
+      "font_class": "menu",
+      "unicode": "e63e",
+      "unicode_decimal": 58942
+    }
+  ]
+}

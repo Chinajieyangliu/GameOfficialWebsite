@@ -1,0 +1,171 @@
+// 页面主体样式调整
+*{
+   box-sizing: border-box;
+   outline: none;
+}
+html {
+   font-size: 13px;
+}
+body{
+   margin: 0;
+   padding: 0;
+   font-family: Arial, Helvetica, sans-serif;
+   line-height: 1.2em;
+   background: #f1f1f1;
+   -webkit-font-smoothing:antialiased
+}
+a{
+   color: #666;
+}
+// 页面主色调调整
+$colors:(
+   "primary":#db9e3f,
+   "info":#4b67af,
+   "white" : #fff,
+   "light" : #f9f9f9,
+   "grey": #999,
+   "grey-1":#666,
+   "dark-1":#343440,
+   "dark":#222,
+   "black":#000
+
+);
+
+// 对文字进行遍历(text-对应颜色
+@each $colorKey,$colorValue in $colors{
+   .text-#{$colorKey}{
+      color:$colorValue
+   }
+   .bg-#{$colorKey}{
+      background-color: $colorValue;
+   }
+}
+// text对齐样式
+@each $var in (left,center,right) {
+    .text-#{$var} {
+    text-align: $var !important;
+    }
+}
+// 文字的样式
+$base-font-size:13px;
+$font-size:(
+   xxs:.6154,
+   xs:.7692,
+   sm:.9231,
+   md:1,
+   lg:1.0769,
+   xl:1.2308
+);
+@each $fontSizeKey,$fontSizeValue in  $font-size{
+   .fs-#{$fontSizeKey}{
+      font-size: $fontSizeValue*$base-font-size;
+   }
+}
+
+// flex布局
+.d-flex{
+   display: flex;
+}
+.flex-column{
+   flex-direction: column;
+}
+$flex-jc:(
+   start:flex-start,
+   end:flex-end,
+   center:center,
+   between:space-between,
+   around:space-around
+
+);
+// 横轴布局
+@each $flexKey,$flexValue in $flex-jc{
+   .jc-#{$flexKey}{
+      justify-content:$flexValue;
+   }
+}
+
+// 数轴布局
+$flex-ai:(
+   start:flex-start,
+   end:flex-end,
+   center:center,
+   stretch:stretch
+
+);
+@each $flexKey,$flexValue in $flex-ai{
+   .ai-#{$flexKey}{
+      align-items:$flexValue;
+   }
+}
+
+//当有元素占像素是，其他位置像素
+.flex-1{
+   flex: 1;
+}
+.flex-grow-1{
+   flex-grow: 1;
+}
+
+// 边距定义
+$spacing-type :(m:margin,p:padding);
+$spacing-direcctions : (t:top,r:right,b:bottom,l:left);
+$spacing-base-size : 1rem;
+$spacing-sizes : (0:0,1:0.25,2:0.5,3:1,4:1.5,5:3);
+   // 定义m-0系列（定义全局边距）
+   @each $typeKey,$typeValue in $spacing-type{
+         @each $spacingSizesKey,$pacingSizeValue in $spacing-sizes{
+            .#{$typeKey}-#{$spacingSizesKey}{
+              #{ $typeValue} :$pacingSizeValue*$spacing-base-size
+            }
+         }
+   }
+   // 定义边距方法mt-0系列（定义上下左右边距）
+   @each $typeKey,$typeValue in $spacing-type{
+      @each $direcctionsKey,$direcctionsValue in $spacing-direcctions{
+         @each $spacingSizesKey,$pacingSizeValue in $spacing-sizes{
+            .#{$typeKey}#{ $direcctionsKey}-#{$spacingSizesKey}{
+              #{ $typeValue}-#{$direcctionsValue} :$pacingSizeValue*$spacing-base-size
+            }
+            
+         }
+      }
+   }
+   // 定义m-left m-bottom系列（定义上下、左右边距）
+   @each $typeKey,$typeValue in $spacing-type{
+         @each $spacingSizesKey,$pacingSizeValue in $spacing-sizes{
+            .#{$typeKey}x-#{$spacingSizesKey}{
+              #{ $typeValue}-left:$pacingSizeValue*$spacing-base-size;
+              #{ $typeValue}-right:$pacingSizeValue*$spacing-base-size
+            }
+            .#{$typeKey}y-#{$spacingSizesKey}{
+               #{ $typeValue}-top:$pacingSizeValue*$spacing-base-size;
+               #{ $typeValue}-bottom:$pacingSizeValue*$spacing-base-size
+             }
+         }
+   }
+
+
+   // 按钮的基本定义
+   .btn{
+      border: none;
+      border-radius: .1538rem;
+      font-size: map-get($font-size, 'sm')* $base-font-size ;
+      padding: 0.2rem 0.6rem;
+   }
+// 首页高亮
+.nav{
+   .nav-item{
+      border-bottom:3px solid transparent ;
+      padding-bottom: 0.2rem;
+      &.active{
+         border-bottom:3px solid #fff ;
+      }
+   }
+}
+// 图片的高度和宽度
+.w-100{
+   width: 100%;
+}
+.h-100{
+   height: 100%;
+}
